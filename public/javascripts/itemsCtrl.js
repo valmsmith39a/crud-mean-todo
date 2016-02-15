@@ -2,9 +2,6 @@ var app = angular.module('meanStackApp', ['ui.router']);
 
 function mainController($scope, $http) {
 
-  // Post a todo object into MongoDB
-  // Get a todo object from  MongoDB 
-  // ToDo object is a model 
   $scope.getAllItems = function() {
     // Call method in the service 
     Items.getAllItems()
