@@ -10,7 +10,7 @@ var users = require('./routes/users');
 
 var app = express();
 
-var mongoUrl = process.env.MONGOLAB_URI || 'mongodb://localhost/inclassexammeantodo'
+var mongoUrl = process.env.MONGOLAB_URI || 'mongodb://localhost/inclassexamtodo'
 var mongoose = require('mongoose');
 mongoose.connect(mongoUrl, function(err) {
   console.log(err || `Connected to MongoDB: ${mongoUrl}`);

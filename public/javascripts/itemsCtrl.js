@@ -3,17 +3,21 @@ var app = angular.module('meanStackApp', []);
 
 function mainController($scope, $http, Items) {
 
+  Items.getAllItems()
+    .then(function(res){
+      console.log('response is: ', res);
+      //$scope.itemObject = res.data; 
+      console.log('task created is: ', res.data);
+    });
+
   $scope.getAllItems = function() {
-    
-    /*;
+
     // Call method in the service 
     Items.getAllItems()
     .then(function(res){
-      console.log('response is: ', res);
-      $scope.itemObject = res.data; 
-      console.log('task created is: ')
+      console.log('get all items response is: ', res);
+      //$scope.itemObject = res.data; 
     });
-    */
   };
 
   $scope.createItem = function() {
