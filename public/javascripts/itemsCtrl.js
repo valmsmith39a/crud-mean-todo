@@ -43,6 +43,22 @@ function mainController($scope, $http, Items) {
       console.log('removed user object is: ', res.data);
     });
   };
+
+  $scope.updateItem = function(itemIndex) {
+    //console.log('task index removed is: ', itemId);
+    //console.log('array of object is: ', $scope.itemObjectsArray);
+    //console.log('item to remove is: ', $scope.itemObjectsArray[index]);
+    var itemId = $scope.itemObjectsArray[itemIndex]._id;
+    var taskText = $scope.itemObjectsArray[itemIndex].task;
+    console.log('task text is: ', taskText);
+    console.log('item id is: ', itemIndex);
+  
+    Items.updateItem($scope.itemObjectsArray[itemIndex])
+    .then(function(res) {
+      console.log('updated response is: ', res);
+      console.log('updated user object is: ', res.data);
+    });
+  };
 }
 
 app.service('Items', function($http) {
@@ -65,6 +81,12 @@ app.service('Items', function($http) {
     //console.log('removeItem() in itemSrvc.jsi, item to remove is: ', itemIndex);
     //console.log('item to remove object id is: ', itemIndex);
     return $http.delete('/removeitem/' + itemId);
+  };
+
+   this.updateItem = function(itemObj) {
+    //console.log('removeItem() in itemSrvc.jsi, item to remove is: ', itemIndex);
+    //console.log('item to remove object id is: ', itemIndex);
+    return $http.put('/updateitem', itemObj);
   };
 
 });

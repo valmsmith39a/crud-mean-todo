@@ -26,10 +26,19 @@ router.post('/createitem', function(req, res) {
 });
 
 // Create 
-router.put('/updateitem/:itemId', function(req, res, next) {
+router.put('/updateitem', function(req, res, next) {
+  /*
   Item.findById(req.params.itemId, function(err, itemObj){
     console.log('items in router file is: ', itemObj);
     res.send(itemObj);
+  });
+  */
+  console.log('inside update in router file, ', req.body)
+  console.log('req.body.task is: ', req.body.task);
+  console.log('id: ', req.body._id);
+
+  Item.update({_id: req.body._id}, {task: req.body.task}, function(err, data) {
+            res.status(err ? 400 : 200).send(err || 'success');
   });
 });
 
