@@ -44,15 +44,13 @@ function mainController($scope, $http, Items) {
     });
   };
 
+
   $scope.updateItem = function(itemIndex) {
-    //console.log('task index removed is: ', itemId);
-    //console.log('array of object is: ', $scope.itemObjectsArray);
-    //console.log('item to remove is: ', $scope.itemObjectsArray[index]);
     var itemId = $scope.itemObjectsArray[itemIndex]._id;
-    var taskText = $scope.itemObjectsArray[itemIndex].task;
-    console.log('task text is: ', taskText);
-    console.log('item id is: ', itemIndex);
-  
+    console.log('updated task is: ', $scope.updatedTask.text);
+    //$scope.itemObjectsArray[itemIndex].task = $scope.updatedTask;
+    //$scope.itemObjectsArray[itemIndex].task 
+
     Items.updateItem($scope.itemObjectsArray[itemIndex])
     .then(function(res) {
       console.log('updated response is: ', res);

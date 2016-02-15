@@ -15,7 +15,8 @@
     <tbody>
       <tr ng-repeat="item in itemObjectsArray" track by index>
         <td>
-          task {{$index+1}}: {{item.task}}
+          <input ng-model="updatedTask.text" placeholder="{{item.task}}"type="text">
+          <!-- task {{$index+1}}: {{item.task}} -->
         </td>
         <td>
         <button ng-click=removeItem($index)>
