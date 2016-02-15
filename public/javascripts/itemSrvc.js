@@ -2,19 +2,19 @@
 
 var app = angular.module('meanStackApp');
 
-app.service('Todos', function($http) {
-  console.log('todos service');
+app.service('Items', function($http) {
+  console.log('items service');
 
-  var newTodoObjG = {};
+  var newItemObjG = {};
 
-  this.getAllTodos = function() {
-    console.log('getAllTodos() in todoSrvc.js');
-    return $http.get('/getalltodos');
+  this.getAllItems = function() {
+    console.log('getAllItems() in itemSrvc.js');
+    return $http.get('/getallitems');
   };
 
-  this.createATodo = function(newTodoObj) {
-    console.log('createATodo() in todosSrvc.js');
-    console.log('new todo is: ', newTodoObj);
-    return $http.post('/createatidi', newTodoObj);
+  this.createItem = function(newItemObj) {
+    console.log('createItem() in items Srvc.js');
+    console.log('new item is: ', newItemObj);
+    return $http.post('/createitem', newItemObj);
   };
 });

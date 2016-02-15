@@ -5,15 +5,13 @@ function mainController($scope, $http) {
   // Post a todo object into MongoDB
   // Get a todo object from  MongoDB 
   // ToDo object is a model 
-  $scope.readItem = function() {
-
-    var itemObject = {}; 
-    itemObject.todoContent = $scope.todoContent;
-    $scope.items.push(itemObject);
-
-    // Call method in the service 
+  $scope.getAllItems = function() {
     
-
+    // Call method in the service 
+    Items.getAllItems()
+    .then(function(res){
+      console.log('response is: ', res);
+    });
 
     /*
     $http.get('/routes/todos')
