@@ -16,6 +16,15 @@ router.get('/getallitems', function(req, res, next) {
   });
 });
 
+router.post('/createitem', function(req, res) {
+  console.log('inside create item in router file');
+  console.log('new item object is', req.body);
+  Item.create(req.body, function(err, item){
+    console.log('item created is: ', item);
+    res.status(err ? 400 : 200).send(err || item);
+  });
+});
+
 // Create 
 router.put('/getallitems', function(req, res, next) {
   /*

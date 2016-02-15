@@ -4,8 +4,18 @@
   <meta charset="UTF-8">
   <title>Document</title>
 </head>
-<body>
-  <h1>HELLO from index.html</h1>
-  
+<body ng-app="meanStackApp" ng-controller="mainController">
+  <h1>Todo List</h1>
+  <input ng-model="itemObject.task" type="text">
+  <button ng-click="createItem()">Add Task</button>
+  <table>
+    <tbody>
+      <tr>
+        <td>
+          task is: {{itemObject}}
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </body>
 </html>
