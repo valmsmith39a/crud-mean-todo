@@ -1,9 +1,9 @@
-var app = angular.module('meanStackApp', ['ui.router']);
+//var app = angular.module('meanStackApp', ['ui.router']);
+var app = angular.module('meanStackApp', []);
 
-function mainController($scope, $http) {
+function mainController($scope, $http, Items) {
 
   $scope.getAllItems = function() {
-    
     
     /*;
     // Call method in the service 
@@ -17,15 +17,30 @@ function mainController($scope, $http) {
   };
 
   $scope.createItem = function() {
-    console.log('task created is: ', $scope.itemObject);
-    debugger;
-    /*
-    Items.createItem($scope.newItem)
+    console.log('task created is: ', $scope.newItemObject);
+    
+    Items.createItem($scope.newItemObject)
     .then(function(res) {
       console.log('response is: ', res);
       console.log('user object is: ', res.data);
-      $scope.itemObj = res.data;
+      //$scope.itemObj = res.data;
     });
-    */
   };
 }
+
+app.service('Items', function($http) {
+  console.log('items service');
+
+  var newItemObjG = {};
+
+  this.getAllItems = function() {
+    console.log('getAllItems() in itemSrvc.js');
+    return $http.get('/getallitems');
+  };
+
+  this.createItem = function(newItemObj) {
+    console.log('createItem() in items Srvc.js');
+    console.log('new item is: ', newItemObj);
+    return $http.post('/createitem', newItemObj);
+  };
+});

@@ -15,6 +15,6 @@ app.service('Items', function($http) {
   this.createItem = function(newItemObj) {
     console.log('createItem() in items Srvc.js');
     console.log('new item is: ', newItemObj);
-    return $http.post('/createitem', newItemObj);
+    //return $http.post('/createitem', newItemObj);
   };
 });

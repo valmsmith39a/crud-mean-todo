@@ -3,16 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <title>Document</title>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.js"></script>
+  <script src="/javascripts/itemsCtrl.js"></script>
 </head>
 <body ng-app="meanStackApp" ng-controller="mainController">
   <h1>Todo List</h1>
-  <input ng-model="itemObject.task" type="text">
+  <input ng-model="newItemObject.task" type="text">
   <button ng-click="createItem()">Add Task</button>
   <table>
     <tbody>
       <tr>
-        <td>
-          task is: {{itemObject}}
+        <td ng-repeat="item in Items">
+          task is: {{item.task}}
         </td>
       </tr>
     </tbody>
