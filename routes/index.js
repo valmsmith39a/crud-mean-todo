@@ -35,11 +35,25 @@ router.put('/updateitem/:itemId', function(req, res, next) {
 
 router.delete('/removeitem/:itemId', function(req, res, next) {
   console.log('inside delete router file');
-  console.log('req.body to delete is', req.params.itemId);
+  //console.log('req.body to delete is item index', req.params.itemIndex);
   Item.findById(req.params.itemId, function(err, itemObj){
     console.log('items in router file is: ', itemObj);
-    res.send(itemObj);
+    itemObj.remove(function(err, item){
+      console.log('remove successful')
+      res.status(err ? 400:200).send(err||null);
+    });
   });
+  /*
+  Item.find({}, function(err, items){
+    console.log('items in router BEFORE file is: ', items);
+    items.splice(req.params.itemIndex, 1);
+    console.log('items in router AFTER file is: ', items);
+    items.save(function(err, item){
+      console.log('err in deleting is: ', err);
+      res.status(err ? 400 : 200).send(err || item);
+    });
+  });
+  */
 });
 
 module.exports = router;

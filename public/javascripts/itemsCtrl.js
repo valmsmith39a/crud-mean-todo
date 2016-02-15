@@ -31,11 +31,13 @@ function mainController($scope, $http, Items) {
     });
   };
 
-  $scope.removeItem = function(index) {
-    console.log('task index removed is: ', index);
-    console.log('array of object is: ', $scope.itemObjectsArray);
-    console.log('item to remove is: ', $scope.itemObjectsArray[index]);
-    Items.removeItem($scope.itemObjectsArray[index])
+  $scope.removeItem = function(itemIndex) {
+    console.log('task index removed is: ', itemIndex);
+    //console.log('array of object is: ', $scope.itemObjectsArray);
+    //console.log('item to remove is: ', $scope.itemObjectsArray[index]);
+    var itemId = $scope.itemObjectsArray[itemIndex]._id;
+    console.log('item id is: ', itemId);
+    Items.removeItem(itemId)
     .then(function(res) {
       console.log('removed response is: ', res);
       console.log('removed user object is: ', res.data);
@@ -59,10 +61,9 @@ app.service('Items', function($http) {
     return $http.post('/createitem', newItemObj);
   };
 
-  this.removeItem = function(itemObject) {
-    console.log('removeItem() in itemSrvc.jsi, item to remove is: ', itemObject);
-    var itemId = itemObject._id;
-    console.log('item to remove object id is: ', itemId);
+  this.removeItem = function(itemId) {
+    //console.log('removeItem() in itemSrvc.jsi, item to remove is: ', itemIndex);
+    //console.log('item to remove object id is: ', itemIndex);
     return $http.delete('/removeitem/' + itemId);
   };
 
