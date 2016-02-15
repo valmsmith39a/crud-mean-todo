@@ -10,11 +10,17 @@
   <h1>Todo List</h1>
   <input ng-model="newItemObject.task" type="text">
   <button ng-click="createItem()">Add Task</button>
+  <br>
   <table>
     <tbody>
-      <tr>
-        <td ng-repeat="item in Items">
-          task is: {{item.task}}
+      <tr ng-repeat="item in itemObjectsArray track by index">
+        <td>
+          task {{$index+1}}: {{item.task}}
+        </td>
+        <td>
+        <button ng-click=removeItem()>
+          delete
+        </button>
         </td>
       </tr>
     </tbody>

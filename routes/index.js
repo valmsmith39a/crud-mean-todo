@@ -35,7 +35,8 @@ router.put('/getallitems', function(req, res, next) {
   */
 });
 
-router.delete('/getallitems', function(req, res, next) {
+router.delete('/removeitem', function(req, res, next) {
+  console.log('inside delete router file');
   /*
   Item.find({}, function(err, items){
     console.log('items in router file is: ', items);

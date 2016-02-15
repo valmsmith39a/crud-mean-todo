@@ -5,13 +5,14 @@ function mainController($scope, $http, Items) {
 
   Items.getAllItems()
     .then(function(res){
-      console.log('response is: ', res);
+      console.log('get all items res', res);
       //$scope.itemObject = res.data; 
-      console.log('task created is: ', res.data);
+      console.log('get all items res.data', res.data);
+      $scope.itemObjectsArray = res.data; 
+
     });
 
   $scope.getAllItems = function() {
-
     // Call method in the service 
     Items.getAllItems()
     .then(function(res){
@@ -25,10 +26,20 @@ function mainController($scope, $http, Items) {
     
     Items.createItem($scope.newItemObject)
     .then(function(res) {
-      console.log('response is: ', res);
-      console.log('user object is: ', res.data);
-      //$scope.itemObj = res.data;
+      console.log('created response is: ', res);
+      console.log('created user object is: ', res.data);
     });
+  };
+
+  $scope.removeItem = function() {
+    console.log('task removed is: ', $scope.newItemObject);
+    /*
+    Items.removeItem($scope.newItemObject)
+    .then(function(res) {
+      console.log('removed response is: ', res);
+      console.log('removed user object is: ', res.data);
+    });
+    */
   };
 }
 
@@ -47,4 +58,10 @@ app.service('Items', function($http) {
     console.log('new item is: ', newItemObj);
     return $http.post('/createitem', newItemObj);
   };
+
+  this.removeItem = function() {
+    console.log('removeItem() in itemSrvc.js');
+    return $http.delete('/removeitem');
+  };
+
 });
