@@ -1,7 +1,7 @@
 //var app = angular.module('meanStackApp', ['ui.router']);
 var app = angular.module('meanStackApp', []);
 
-function mainController($scope, $http, Items) {
+app.controller('mainController', function($scope, $http, Items) {
 
   Items.getAllItems()
     .then(function(res){
@@ -57,7 +57,7 @@ function mainController($scope, $http, Items) {
       console.log('updated user object is: ', res.data);
     });
   };
-}
+});
 
 app.service('Items', function($http) {
   console.log('items service');
