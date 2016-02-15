@@ -31,15 +31,15 @@ function mainController($scope, $http, Items) {
     });
   };
 
-  $scope.removeItem = function() {
-    console.log('task removed is: ', $scope.newItemObject);
-    /*
-    Items.removeItem($scope.newItemObject)
+  $scope.removeItem = function(index) {
+    console.log('task index removed is: ', index);
+    console.log('array of object is: ', $scope.itemObjectsArray);
+    console.log('item to remove is: ', $scope.itemObjectsArray[index]);
+    Items.removeItem($scope.itemObjectsArray[index])
     .then(function(res) {
       console.log('removed response is: ', res);
       console.log('removed user object is: ', res.data);
     });
-    */
   };
 }
 
@@ -59,9 +59,11 @@ app.service('Items', function($http) {
     return $http.post('/createitem', newItemObj);
   };
 
-  this.removeItem = function() {
-    console.log('removeItem() in itemSrvc.js');
-    return $http.delete('/removeitem');
+  this.removeItem = function(itemObject) {
+    console.log('removeItem() in itemSrvc.jsi, item to remove is: ', itemObject);
+    var itemId = itemObject._id;
+    console.log('item to remove object id is: ', itemId);
+    return $http.delete('/removeitem/' + itemId);
   };
 
 });

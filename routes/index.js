@@ -26,25 +26,20 @@ router.post('/createitem', function(req, res) {
 });
 
 // Create 
-router.put('/getallitems', function(req, res, next) {
-  /*
-  Item.find({}, function(err, items){
-    console.log('items in router file is: ', items);
-    res.send(items);
+router.put('/updateitem/:itemId', function(req, res, next) {
+  Item.findById(req.params.itemId, function(err, itemObj){
+    console.log('items in router file is: ', itemObj);
+    res.send(itemObj);
   });
-  */
 });
 
-router.delete('/removeitem', function(req, res, next) {
+router.delete('/removeitem/:itemId', function(req, res, next) {
   console.log('inside delete router file');
-  /*
-  Item.find({}, function(err, items){
-    console.log('items in router file is: ', items);
-    res.send(items);
+  console.log('req.body to delete is', req.params.itemId);
+  Item.findById(req.params.itemId, function(err, itemObj){
+    console.log('items in router file is: ', itemObj);
+    res.send(itemObj);
   });
-  */
 });
-
-
 
 module.exports = router;

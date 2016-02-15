@@ -13,12 +13,12 @@
   <br>
   <table>
     <tbody>
-      <tr ng-repeat="item in itemObjectsArray track by index">
+      <tr ng-repeat="item in itemObjectsArray" track by index>
         <td>
           task {{$index+1}}: {{item.task}}
         </td>
         <td>
-        <button ng-click=removeItem()>
+        <button ng-click=removeItem($index)>
           delete
         </button>
         </td>
