@@ -1,0 +1,1 @@
+In class exam to create MEAN (MongoDB, Express, AngularJS, Node.js) stack, CRUD (create/read/update/delete) app. 
